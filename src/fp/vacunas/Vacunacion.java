@@ -8,7 +8,7 @@ import fp.utiles.Checkers;
 public record Vacunacion(LocalDate fecha, String comunidad, Integer pfizer, Integer moderna, Integer astrazeneca, Integer janssen, Integer numeroPersonas) implements Comparable<Vacunacion>{
 	
 	public Vacunacion {
-		Checkers.check("La fecha de debe ser posterior al 01/02/2021", fecha.isAfter(LocalDate.of(2021, 02, 01)));
+		Checkers.check("La fecha de debe ser posterior al 01/01/2021", fecha.isAfter(LocalDate.of(2021, 01, 01)));
 	}
 	
 	public Integer numeroTotal() {
