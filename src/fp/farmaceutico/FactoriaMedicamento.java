@@ -24,9 +24,13 @@ public class FactoriaMedicamento {
 		List<Medicamento> res = new ArrayList<>();
 		try {
 			List<String> aux = Files.readAllLines(Paths.get(nombreFichero));
+			int cont = 0;
 			for(String e:aux) {
-				Medicamento m = parseaMedicamento(e);
-				res.add(m);
+				if(cont>0) {
+					Medicamento m = parseaMedicamento(e);
+					res.add(m);
+				}
+				cont++;
 				
 			}
 		} catch (IOException e) {

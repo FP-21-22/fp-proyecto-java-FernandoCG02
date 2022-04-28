@@ -5,9 +5,9 @@ import fp.clinico.EstudioClinicoBucles;
 public class TestEstudioClinicoBucles {
 
 	public static void main(String[] args) {
-		EstudioClinicoBucles dajlkhdak = new EstudioClinicoBucles();
-		Prueba(dajlkhdak);
-//		Prueba2(dajlkhdak);
+		EstudioClinicoBucles e = new EstudioClinicoBucles();
+		Prueba(e);
+//		Prueba2(e);
 
 	}
 	private static void Prueba(EstudioClinicoBucles estudio) {

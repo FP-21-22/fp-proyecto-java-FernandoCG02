@@ -11,14 +11,18 @@ public class FactoriaVacunacion {
 		List<String> aux;
 		try {
 			aux = Files.readAllLines(Paths.get(nombreFichero));
+			int cont = 0;
 			for(String e:aux) {
-				Vacunacion v = Vacunacion.parse(e);
-				res.add(v);				
+				if(cont>0) {
+					Vacunacion v = Vacunacion.parse(e);
+					res.add(v);
+				}
+				cont++;
 			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}		
 		
 		return res;
 		
