@@ -17,7 +17,7 @@ public class EstudioClinicoBucles implements EstudioClinico {
 	}
 	
 	public EstudioClinicoBucles(List<PacienteEstudio> lista) {
-		this.lista = lista;		
+		this.lista = lista;	
 		
 	}
 
@@ -64,23 +64,11 @@ public class EstudioClinicoBucles implements EstudioClinico {
 
 	}
 
-	@SuppressWarnings("null")
 	@Override
 	public EstudioClinico of(String nombreFichero) {
 		// 
-		EstudioClinico res = null;
-		List<String> aux;
-		try {
-			aux = Files.readAllLines(Paths.get(nombreFichero));
-			for(String e: aux) {
-				PacienteEstudio pe= PacienteEstudio.parse(e);
-				res.incluyePaciente(pe);
-			}
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		return new EstudioClinicoBucles(this.leeFichero(nombreFichero));
 		
-		return res;
 	}
 
 	@Override

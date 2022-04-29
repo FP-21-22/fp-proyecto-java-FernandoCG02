@@ -12,18 +12,47 @@ Aquí debes añadir la descripción del dataset y un enunciado del dominio del p
   * **fp.common**: Paquete que contiene los tipos auxiliares del proyecto
   * **fp.utiles**:  Paquete que contiene las clases de utilidad. 
 * **/data**: Contiene el dataset o datasets del proyecto
-    * **\<dataset1.csv\>**: Añade una descripción genérica del dataset.
-    * **\<dataset2.csv\>**: Añade una descripción del resto de datasets que puedas tener.
+    * **estudio_clinico.csv**: Es un listado con los datos de Paciente Estudio, que son, el id del paciente, el genero, la edad, si tiene o no hipertension, si tiene o no enfermedad en el corazon, el tipo de residencia y el  nivel medio de glucosa
+    * **ccaa_vacunas_3.csv**: Es un listado de los datos de Vacunación, que son , las fehcas de publicación de las vacunas, las comunidades autónomas, el numero de vacunas puestas de cada tipo, como son Pfizer, Moderna, AstraZeneca y Janssen y por ultimo el numero de personas con las dosis completas.
+    * **medicamentos.csv**: Es un listado con los datos de medicamentos, que son, el nombre del medicamento, el tipo de medicamento, el codigo de la enfermedad, la farmaceutica que lo vende, la puntuacion del medicamento, el indice somatico y la fecha de catalogo.
      
 ## Estructura del *dataset*
 
-Aquí debes describir la estructura del dataset explicando qué representan los datos que contiene y la descripción de cada una de las columnas. Incluye también la URL del dataset original.
+*Dataset 1*
 
-El dataset está compuesto por \<N\> columnas, con la siguiente descripción:
+El dataset está compuesto por 7 columnas, con la siguiente descripción:
 
-* **\<columna 1>**: de tipo \<tipo\>, representa....
-* **\<columna 2>**: de tipo \<tipo\>, representa....
-....
+* **columna 1**: de tipo String, representa el id del paciente
+* **columna 2**: de tipo String, representa el genero de cada paciente
+* **columna 3**: de tipo Double, representa la edad de cada paciente
+* **columna 4**: de tipo Boolean, representa si el paciente tiene o no hipertension
+* **columna 5**: de tipo Boolean, representa si el paciente tiene o no enfermedad en el corazon
+* **columna 6**: de tipo TipoResidencia, representa el tipo de residencia del paciete, si es rural o urbana
+* **columna 7**: de tipo Double, representa el nivel medio de glucosa del paciente
+
+*Dataset 2*
+
+El dataset está compuesto por 7 columnas, con la siguiente descripción:
+
+* **columna 1**: de tipo LocalDate, representa la fecha de publicacion de los datos
+* **columna 2**: de tipo String, representa la comunidad autonoma de la que se recopilan los datos
+* **columna 3**: de tipo Integer, representa la cantidad de vacunas pfizer puestas
+* **columna 4**: de tipo Integer, representa la cantidad de vacunas moderna puestas
+* **columna 5**: de tipo Integer, representa la cantidad de vacunas astazeneca puestas
+* **columna 6**: de tipo Integer, representa la cantidad de vacunas janssen puestas
+* **columna 7**: de tipo Integer, representa el numero de personas con las dosis completas puestas
+
+*Dataset 3*
+
+El dataset está compuesto por 7 columnas, con la siguiente descripción:
+
+* **columna 1**: de tipo String, representa el nombre del medicamento
+* **columna 2**: de tipo TipoMedicamento, representa el tipo de medicamento que es
+* **columna 3**: de tipo String, representa el codigo de la enfermedad a la que ayuda a curar
+* **columna 4**: de tipo String, representa la farmaceutica que lo distribuye
+* **columna 5**: de tipo Double, representa la puntuacion dada a dicho medicamento
+* **columna 6**: de tipo Integer, representa el indice somatico del medicamento
+* **columna 7**: de tipo LocalDate, representa la fecha de catalogo del medicamento
 
 ## Tipos implementados
 
@@ -168,36 +197,35 @@ TipoResidencia, TipoMedicamento, PersonaTest, FactoriaMedicamentoTest, Vacunacio
 ### Factoría
 Descripción breve de la factoría.
 
-- _método 1_: Descripción del método 1.
--	_método 2_: Descripción del método 2.
+- FactoriaMedicamento.parseaMedicamento: parsea los datos del tipo medicamento que le entran
+-	FactoriaMedicamento.leeFichero: lee el fichero medicamentos.csv
+- FactoriaVacunacion.leeFichero: lee el fichero ccaa_vacunas.csv
 
 ### Tipo Contenedor
 
-Descripción breve del tipo contenedor.
+Clase que realiza funciones utilizando el dataset
 
 **Propiedades**:
 
-- _propiedad1_, de tipo \<Tipo1\>, consultable. 
-- _propiedad2_, de tipo \<Tipo2\>, consultable y modificable. 
-- ...
-- 
+- lista, de tipo List, consultable. 
+
+ 
 **Constructores**: 
 
-- C1: Descripción del constructor 1.
-- C2: Descripción del constructor 2.
-- ...
+- C1: Constructor vacío, que construye la lista sin ningún elemento. 
+- C2: Constructor que recibe una lista de objetos del tipo PacienteEstudio como parámetro.
 
-**Restricciones**:
- 
-- R1: Descripción de la restricción 1.
-- R2: Descripción de la restricción 2.
-- ...
-- 
-**Criterio de igualdad**: Describir el criterio de igualdad
-
-**Criterio de ordenación**: Describir el criterio de ordenación (si lo hay).
 
 **Otras operaciones**:
- 
--	_método 1_: Descripción del método 1.
-- ...
+
+*Funciones:*
+-	numeroPacientes(): nos devuelve el numero de pacientes que hay
+-	incluyePaciente(PacienteEstudio paciente): nos permite incluir nuevos pacientes al final de la lista
+-	incluyePacientes(Collection<PacienteEstudio> pacientes): nos permite incluir nuevos pacientes donde queramos
+-	eliminaPaciente(PacienteEstudio paciente): nos permite eliminar pacientes de la lista
+-	Boolean estaPaciente(PacienteEstudio paciente): nos permite ver si un paciente se encuentra en la lista
+-	borraEstudio(): nos permite borrar los datos de la lista
+
+*Metodos:*
+-	of: devuelve tipo EstudioClinico con los datos de un fichero
+-	lee fichero: lee los datos de un fichero y los mete en una lista0
