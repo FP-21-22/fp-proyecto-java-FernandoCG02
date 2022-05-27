@@ -55,8 +55,7 @@ El dataset está compuesto por 7 columnas, con la siguiente descripción:
 * **columna 7**: de tipo LocalDate, representa la fecha de catalogo del medicamento
 
 ## Tipos implementados
-
-Describe aquí los tipos que usas en tu proyecto.
+- EstudioClinico, EstudioClinicoBucles, de tipo imperativa y EstudioClinicoStream, de tipo funcional. 
 
 ### Tipo Base
 Dentro del tipo base, tenemos los records implementados en el proyecto. Estos son: Persona, Paciente, PacienteEstudio, Vacunacion y Medicamento.
@@ -83,10 +82,6 @@ Dentro del tipo base, tenemos los records implementados en el proyecto. Estos so
 
 **Criterio de ordenación**:  Se ordenara por el dni de la persona.
 
-**Otras operaciones**:
- 
--	_método 1_: Descripción del método 1.
-- ...
 
 **Paciente**
 **Propiedades**:
@@ -174,10 +169,6 @@ Dentro del tipo base, tenemos los records implementados en el proyecto. Estos so
 - indiceSomatico, se tipo Integer, consultable.
 - fechaCatalogo, se tipo LocalDate, consultable y modificable.
 
-**Constructores**: 
-
-- C1:
-- C2:
 
 **Restricciones**:
  
@@ -214,6 +205,8 @@ Clase que realiza funciones utilizando el dataset
 
 - C1: Constructor vacío, que construye la lista sin ningún elemento. 
 - C2: Constructor que recibe una lista de objetos del tipo PacienteEstudio como parámetro.
+- C3: Constructor que recibe un Stream<Vacunacion> e inicialice el atributo, que es un List<Vacunacion>
+- C4: Constructor que recibe un Stream<Medicamento> e inicialice el atributo.
 
 
 **Otras operaciones**:
@@ -227,5 +220,16 @@ Clase que realiza funciones utilizando el dataset
 -	borraEstudio(): nos permite borrar los datos de la lista
 
 *Metodos:*
--	of: devuelve tipo EstudioClinico con los datos de un fichero
--	lee fichero: lee los datos de un fichero y los mete en una lista0
+-	**of**: devuelve tipo EstudioClinico con los datos de un fichero
+-	**lee fichero**: lee los datos de un fichero y los mete en una lista0
+-	**anyadeVacunacion**: dado un objeto del tipo Vacunacion lo añade al atributo de List<Vacunacion>.
+-	**vacunacionesEntreFechas**: dadas dos fechas como parámetros de entrada, devuelve una lista con aquellas vacunaciones entre dichas fechas.
+-	**existeNumPersonasPautaCompletaPorEncimaDe**: dada una comunidad y un valor entero, indica si existen o no vacunaciones con un número de personas con la pauta completa de vacunación por encima del valor entero dado. 
+-	**diaMasVacunacionesEn**: dada una comunidad, devuelve la fecha en la que hubo más personas vacunadas. 
+-	**vacunacionesPorFecha**: devuelve un mapa, o diccionario, en el que las claves son las fechas y los valores son listas de vacunaciones asociadas a dichas fechas. 
+-	**maximoNumTotalVacunasporComunidad**: devuelve un mapa, o diccionario, en el que las claves son las comunidades y los valores son el máximo para el número total de vacunas puestas para cada comunidad. 
+-	**existeMedicamentoSegunTipoAnteriorA**: dado un tipo de medicamento y una fecha, indica si existe un medicamento de dicho tipo posterior a la fecha dada. 
+-	**nombreMedicamentosPuntuacionMayorA**: dada una puntuación, devuelve un conjunto con los nombres de los medicamentos con una puntuación mayor a la dada.
+-	**nombreMedicamentoMayorIndiceSomaticoSegunTipoMedicamento**: dado un tipo de medicamento, devuelve el nombre del medicamento con mayor índice somático. En caso de no haber ninguno, se eleva una excepción.
+-	**agrupaTipoMedicamentoSegunPuntuacionMedia**: devuelve un diccionario que asocia a cada tipo de medicamento su puntuación media.
+-	**fechaCatalogoMasFrecuente**: devuelve la fecha del catálogo más frecuente.
