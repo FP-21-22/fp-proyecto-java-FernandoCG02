@@ -8,10 +8,11 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class EstudioClinicoStream implements EstudioClinico {
 
-List<PacienteEstudio> lista;
+	protected List<PacienteEstudio> lista;
 	
 	public EstudioClinicoStream() {
 		lista = new ArrayList<>();
@@ -20,6 +21,10 @@ List<PacienteEstudio> lista;
 	public EstudioClinicoStream(List<PacienteEstudio> lista) {
 		this.lista = lista;	
 		
+	}
+	
+	public EstudioClinicoStream(Stream<PacienteEstudio> st) {
+		this.lista= st.collect(Collectors.toList());
 	}
 
 	@Override
